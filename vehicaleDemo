@@ -1,0 +1,62 @@
+// Parent class
+class Vehicle {
+    String brand;
+    int speed;
+
+    Vehicle(String brand, int speed) {
+        this.brand = brand;
+        this.speed = speed;
+    }
+
+    void start() {
+        System.out.println(brand + " is starting...");
+    }
+
+    void showSpeed() {
+        System.out.println(brand + " speed is " + speed + " km/h");
+    }
+}
+
+// Child class 1
+class Car extends Vehicle {
+    int doors;
+
+    Car(String brand, int speed, int doors) {
+        super(brand, speed);
+        this.doors = doors;
+    }
+
+    @Override
+    void showSpeed() {
+        System.out.println(brand + " (Car) is running at " + speed + " km/h with " + doors + " doors.");
+    }
+}
+
+// Child class 2
+class Bike extends Vehicle {
+    boolean hasHelmet;
+
+    Bike(String brand, int speed, boolean hasHelmet) {
+        super(brand, speed);
+        this.hasHelmet = hasHelmet;
+    }
+
+    @Override
+    void showSpeed() {
+        System.out.println(brand + " (Bike) speed: " + speed + " km/h. Helmet: " + (hasHelmet ? "Yes" : "No"));
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Vehicle v1 = new Car("Toyota", 120, 4);
+        Vehicle v2 = new Bike("Yamaha", 90, true);
+
+        v1.start();
+        v1.showSpeed();
+
+        v2.start();
+        v2.showSpeed();
+    }
+}
